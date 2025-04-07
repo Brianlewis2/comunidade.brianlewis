@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Império Brian Lewis</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #000;
+      background-image: radial-gradient(circle at center, #111 0%, #000 100%);
+      color: #f8f8f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 40px 20px 100px 20px;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      margin-bottom: 40px;
+      text-align: center;
+      color: #e60000;
+      text-shadow: 0 0 15px #ff0000cc;
+    }
+
+    .button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background-color: #111;
+      color: #ff3333;
+      padding: 15px 30px;
+      border: 2px solid #ff0000;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 1.1em;
+      font-weight: bold;
+      margin: 15px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #ff000030;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #ff0000;
+      color: #000;
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #ff000080;
+    }
+
+    .buttons-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #ccc;
+      text-align: center;
+      padding: 15px 10px;
+      font-size: 0.95em;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 -1px 10px #ff000020;
+    }
+
+    footer a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 0.9em;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 5px;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    /* Tela de carregamento */
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background-color: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    #loader h1 {
+      color: #ff0000;
+      font-size: 2.5em;
+      text-shadow: 0 0 10px #ff0000;
+    }
+
+    #loader p {
+      color: #ccc;
+      font-size: 1em;
+      margin-top: 10px;
+    }
+
+    .bar-container {
+      margin-top: 30px;
+      width: 200px;
+      height: 10px;
+      background-color: #222;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px #ff000033;
+    }
+
+    .bar {
+      height: 100%;
+      width: 0%;
+      background-color: #ff0000;
+      animation: loading 2.5s linear forwards;
+    }
+
+    @keyframes loading {
+      from {
+        width: 0%;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
+
+      .button {
+        width: 90%;
+        padding: 15px 20px;
+        font-size: 1em;
+      }
+
+      footer {
+        font-size: 0.85em;
+      }
+
+      #loader h1 {
+        font-size: 2em;
+      }
+
+      #loader p {
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Tela de carregamento -->
+  <div id="loader">
+    <h1>Brian Lewis</h1>
+    <p>Desenvolvedor do site</p>
+    <div class="bar-container">
+      <div class="bar"></div>
+    </div>
+  </div>
+
+  <h1>Império Brian Lewis</h1>
+
+  <div class="buttons-container">
+    <div class="button" onclick="loadAndRedirect('https://brianlewis2.github.io/site.brianlewis.oficial/')">🌐 Brian Lewis Oficial</div>
+    <div class="button" onclick="loadAndRedirect('https://brianlewis2.github.io/Site-chernobyl/')">☢️ Chernobyl</div>
+    <div class="button" onclick="loadAndRedirect('https://brianlewis2.github.io/Titanic/')">🚢 Titanic</div>
+  </div>
+
+  <footer>
+    Esta comunidade de sites foi desenvolvida por Brian Lewis<br>
+    <a href="https://www.instagram.com/brian_lewis_2?igsh=aHFwOHIyOHlucDV4" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" width="20" style="border-radius: 4px;">
+      @brian_lewis_2
+    </a>
+  </footer>
+
+  <script>
+    window.addEventListener('load', () => {
+      const alreadyLoaded = sessionStorage.getItem('visited');
+
+      if (!alreadyLoaded) {
+        setTimeout(() => {
+          document.getElementById('loader').style.display = 'none';
+          sessionStorage.setItem('visited', 'true');
+        }, 2500);
+      } else {
+        document.getElementById('loader').style.display = 'none';
+      }
+    });
+
+    function loadAndRedirect(url) {
+      sessionStorage.removeItem('visited');
+      document.getElementById('loader').style.display = 'flex';
+      setTimeout(() => {
+        window.location.href = url;
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
